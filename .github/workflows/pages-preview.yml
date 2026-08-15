@@ -24,12 +24,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build preview (rewrite root-absolute paths for the project subpath)
+      - name: Build preview (clean URLs + rewrite root-absolute paths for the project subpath)
         run: |
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
           mkdir _site
-          cp -r *.html photos favicon*.png favicon.ico apple-touch-icon.png robots.txt sitemap.xml site.webmanifest _site/
-          sed -i -E "s#(href|src)=\"/#\1=\"/${REPO_NAME}/#g" _site/*.html
+          cp index.html _site/index.html
+          for f in *.html; do
+            [ "$f" = "index.html" ] && continue
+            name="${f%.html}"
+            mkdir -p "_site/$name"
+            cp "$f" "_site/$name/index.html"
+          done
+          cp -r photos favicon*.png favicon.ico apple-touch-icon.png robots.txt sitemap.xml site.webmanifest _site/
+          find _site -name "*.html" -exec sed -i -E "s#(href|src)=\"/#\1=\"/${REPO_NAME}/#g" {} +
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
