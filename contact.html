@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <title>Book Craniosacral Therapy in London | Contact Craniosacral Therapy London</title>
 <meta name="description" content="Book a craniosacral therapy session in Bethnal Green or Waterloo, London. Email phoenix@tanner.me or WhatsApp +44 7501 827069. Sessions from £30.">
 <meta name="robots" content="index, follow">
@@ -52,30 +57,10 @@ em{font-style:italic;color:var(--clay);}
 .contact-card a{color:var(--clay);text-decoration:none;font-size:.9rem;font-weight:400;}
 .contact-card a:hover{text-decoration:underline;}
 
-/* AVAILABILITY PANEL */
-.avail-panel{background:var(--cream);border:1px solid var(--bord);border-radius:var(--radius);padding:2.5rem 2.5rem 2.2rem;}
-.avail-panel h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;margin-bottom:.5rem;}
-.avail-sub{font-size:.87rem;color:var(--mid);margin-bottom:1.8rem;line-height:1.75;}
-.day-row{display:flex;align-items:center;gap:.9rem;padding:.6rem 0;border-bottom:1px solid var(--bord);}
-.day-row:last-of-type{border-bottom:none;}
-.day-dot{width:7px;height:7px;border-radius:50%;background:var(--clay);flex-shrink:0;}
-.day-label{font-size:.84rem;font-weight:400;color:var(--deep);letter-spacing:.03em;}
-.avail-footer{margin-top:1.6rem;font-size:.82rem;color:var(--light);line-height:1.7;padding-top:1.3rem;border-top:1px solid var(--bord);}
-
-/* SUMMER NOTICE */
-.summer-notice{background:var(--deep);padding:4.5rem 8vw;}
-.summer-notice-in{max-width:1100px;margin:0 auto;}
-.notice-box{border:1px solid rgba(176,122,82,.3);border-radius:var(--radius);padding:3rem 3.2rem;position:relative;overflow:hidden;}
-.notice-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--clay),var(--terra),transparent);}
-.notice-eyebrow{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--clay);margin-bottom:1.2rem;display:block;}
-.notice-box h3{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--cream);margin-bottom:.7rem;line-height:1.2;}
-.notice-intro{font-size:.87rem;color:rgba(250,248,244,.5);margin-bottom:2.2rem;line-height:1.78;max-width:580px;}
-.away-periods{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.away-card{background:rgba(250,248,244,.04);border:1px solid rgba(250,248,244,.08);border-radius:10px;padding:1.6rem 1.8rem;}
-.away-dates{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--cream);margin-bottom:.45rem;line-height:1.3;}
-.away-desc{font-size:.78rem;color:rgba(250,248,244,.38);line-height:1.6;}
-.notice-footer{margin-top:2.2rem;padding-top:1.5rem;border-top:1px solid rgba(250,248,244,.08);font-size:.83rem;color:rgba(250,248,244,.4);line-height:1.75;}
-.notice-footer strong{color:rgba(176,122,82,.85);font-weight:400;}
+/* BOOKING PANEL */
+.book-panel{background:var(--cream);border:1px solid var(--bord);border-radius:var(--radius);padding:.9rem;}
+.book-frame{display:block;width:100%;height:780px;border:0;border-radius:var(--radius);background:var(--cream);}
+.book-footer{margin:1.1rem .6rem .3rem;font-size:.82rem;color:var(--light);line-height:1.7;padding-top:1.1rem;border-top:1px solid var(--bord);}
 
 /* LOCATION STRIP */
 .loc-strip{background:var(--deep);padding:3.5rem 8vw;}
@@ -99,16 +84,15 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
 
 @media(max-width:960px){
   .contact-hero-in{grid-template-columns:1fr;gap:3rem;}
-  .away-periods{grid-template-columns:1fr;}
   .loc-strip-in{grid-template-columns:1fr;}
 }
 @media(max-width:680px){
   .nav-links{display:none;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(250,248,244,.98);backdrop-filter:blur(10px);border-bottom:1px solid var(--bord);padding:1rem 5vw 2rem;}
   .nav-links.open{display:flex;}
   .nav-burger{display:flex;}
-  .contact-hero,.summer-notice,.loc-strip{padding:3.5rem 5vw;}
-  .notice-box{padding:2rem 1.8rem;}
-  .avail-panel{padding:2rem 1.8rem;}
+  .contact-hero,.loc-strip{padding:3.5rem 5vw;}
+  .book-panel{padding:.6rem;}
+  .book-frame{height:720px;}
 }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -135,7 +119,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
     <a class='nav-logo' href='/'>Craniosacral Therapy London</a>
     <ul class="nav-links" id="navLinks">
       <li><a href='/'>Home</a></li>
-      <li><a href='/community-clinic'>Community Clinic</a></li>
+      <li><a href='/community-clinic'>Low Cost CST</a></li>
       <li><a href='/journal'>Journal</a></li>
       <li><a href='/faq'>FAQ</a></li>
       <li><a class='nav-book active' href='/contact'>Contact / Book</a></li>
@@ -153,7 +137,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
       <span class="eyebrow">Get in Touch</span>
       <h2 class="dsp" id="contact-h">Book a session or just<br>say <em>hello</em></h2>
       <div class="rule"></div>
-      <p style="font-size:.92rem;color:var(--mid);margin-bottom:2rem;max-width:460px;line-height:1.8">The easiest way to get started is a quick email or WhatsApp. I'll come back to you with availability and answer anything you'd like to know before committing to anything.</p>
+      <p style="font-size:.92rem;color:var(--mid);margin-bottom:2rem;max-width:460px;line-height:1.8">The easiest way to get started is to book directly using the booking panel on this page. If you'd rather ask something first, a quick email or WhatsApp works just as well, and I'll answer anything you'd like to know before committing to anything.</p>
 
       <div class="contact-card">
         <div class="contact-icon">
@@ -189,46 +173,14 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
       </div>
     </div>
 
-    <!-- Availability panel -->
+    <!-- Booking panel -->
     <div class="fi">
-      <div class="avail-panel">
-        <span class="eyebrow">Availability</span>
-        <h3>When I tend to be available</h3>
-        <p class="avail-sub">I keep a flexible schedule and work with people to find what fits. Most sessions currently fall across these days, though I'm always open to a conversation if none of these work for you.</p>
-        <div class="day-row"><div class="day-dot"></div><span class="day-label">Monday</span></div>
-        <div class="day-row"><div class="day-dot"></div><span class="day-label">Wednesday</span></div>
-        <div class="day-row"><div class="day-dot"></div><span class="day-label">Thursday</span></div>
-        <div class="day-row"><div class="day-dot"></div><span class="day-label">Friday</span></div>
-        <p class="avail-footer">Sessions run for 60 minutes at either Waterloo or Bethnal Green. Just drop me a message and we'll find something that works.</p>
+      <div class="book-panel">
+        <iframe class="book-frame" src="https://cstlfalcrum.vercel.app/book" title="Booking page, book a craniosacral therapy session" loading="eager"></iframe>
+        <p class="book-footer">If you'd rather not book online, just send an email or WhatsApp message and we'll find something that works.</p>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- SUMMER AVAILABILITY NOTICE -->
-<section class="summer-notice" aria-label="Summer availability update">
-  <div class="summer-notice-in fi">
-    <div class="notice-box">
-      <span class="notice-eyebrow">Summer 2025 Update</span>
-      <h3>Away at retreats and festivals</h3>
-      <p class="notice-intro">This summer I'll be offering craniosacral therapy at contact improvisation retreats and festivals. I won't be taking London bookings during these periods, but I'm very much still working. If you'd like to book in around the summer, get in touch early and we'll find a time.</p>
-      <div class="away-periods">
-        <div class="away-card">
-          <div class="away-dates">26 May &ndash; 10 June</div>
-          <div class="away-desc">CST at contact improv retreats and festivals</div>
-        </div>
-        <div class="away-card">
-          <div class="away-dates">13 &ndash; 30 July</div>
-          <div class="away-desc">CST at contact improv retreats and festivals</div>
-        </div>
-        <div class="away-card">
-          <div class="away-dates">24 Aug &ndash; 3 Sept</div>
-          <div class="away-desc">CST at contact improv retreats and festivals</div>
-        </div>
-      </div>
-      <p class="notice-footer">Outside of these dates I'm back in London and available as usual. <strong>Get in touch early</strong> if you'd like to hold a slot around the summer.</p>
-    </div>
   </div>
 </section>
 
@@ -241,7 +193,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
     </div>
     <div class="loc-item">
       <h3>Bethnal Green</h3>
-      <p>Community Clinic<br>279 Cambridge Heath Rd, London E2 0EL<br>Near Bethnal Green station<br><br>Sliding scale &middot; £30&ndash;60 &middot; 60 minutes</p>
+      <p>Low Cost Community Clinic<br>279 Cambridge Heath Rd, London E2 0EL<br>Near Bethnal Green station<br><br>Sliding scale &middot; £30&ndash;60 &middot; 60 minutes</p>
     </div>
   </div>
 </div>
@@ -253,7 +205,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
   <div class="f-title">Registered Craniosacral Therapist · London</div>
   <div class="f-links">
     <a href='/'>Home</a>
-    <a href='/community-clinic'>Community Clinic</a>
+    <a href='/community-clinic'>Low Cost CST</a>
     <a href='/faq'>FAQ</a>
     <a href='/contact'>Contact / Book</a>
     <a href="https://www.instagram.com/phoenixtanner/" target="_blank" rel="noopener">Instagram</a>
