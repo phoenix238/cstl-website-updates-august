@@ -36,7 +36,7 @@ jobs:
             cp "$f" "_site/$name/index.html"
           done
           cp -r photos favicon*.png favicon.ico apple-touch-icon.png robots.txt sitemap.xml site.webmanifest _site/
-          find _site -name "*.html" -exec sed -i -E "s#(href|src)=\"/#\1=\"/${REPO_NAME}/#g" {} +
+          find _site -name "*.html" -exec sed -i -E "s#(href|src)=([\"'])/#\1=\2/${REPO_NAME}/#g" {} +
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
