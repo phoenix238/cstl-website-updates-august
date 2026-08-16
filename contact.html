@@ -57,6 +57,24 @@ em{font-style:italic;color:var(--clay);}
 .contact-card a{color:var(--clay);text-decoration:none;font-size:.9rem;font-weight:400;}
 .contact-card a:hover{text-decoration:underline;}
 
+/* ENQUIRY FORM */
+.enquiry-body{flex:1;min-width:0;}
+.enquiry-form{display:flex;flex-direction:column;gap:.9rem;margin-top:.9rem;}
+.enquiry-form label{font-size:.78rem;color:var(--mid);display:block;margin-bottom:.3rem;}
+.enquiry-form input,.enquiry-form textarea{width:100%;font-family:'Jost',sans-serif;font-weight:300;font-size:.88rem;color:var(--deep);background:var(--sand);border:1px solid var(--bord);border-radius:8px;padding:.7rem .9rem;}
+.enquiry-form textarea{min-height:100px;resize:vertical;}
+.enquiry-form input:focus,.enquiry-form textarea:focus{outline:2px solid var(--clay);outline-offset:1px;}
+.enquiry-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.enquiry-form button{align-self:flex-start;background:var(--clay);color:#fff;border:none;border-radius:2px;padding:.75rem 1.6rem;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .25s;}
+.enquiry-form button:hover{background:var(--terra);}
+.enquiry-form button:disabled{opacity:.6;cursor:default;}
+.enquiry-status{font-size:.84rem;min-height:1.2em;margin:0;}
+.enquiry-status.ok{color:#3a7d4f;}
+.enquiry-status.err{color:#b0523f;}
+.enquiry-fallback{font-size:.78rem;color:var(--light);margin-top:.8rem;}
+.enquiry-fallback a{color:var(--clay);text-decoration:none;}
+.enquiry-fallback a:hover{text-decoration:underline;}
+
 /* BOOKING PANEL */
 .book-panel{background:var(--cream);border:1px solid var(--bord);border-radius:var(--radius);padding:.9rem;}
 .book-frame{display:block;width:100%;height:780px;border:0;border-radius:var(--radius);background:var(--cream);}
@@ -111,7 +129,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
 </script>
 </head>
 <body>
-<a href="https://wa.me/447501827069" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Phoenix">
+<a href="https://wa.me/447501827069?text=Hello%20Phoenix" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Phoenix">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 <nav aria-label="Main navigation">
@@ -139,14 +157,38 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
       <div class="rule"></div>
       <p style="font-size:.92rem;color:var(--mid);margin-bottom:2rem;max-width:460px;line-height:1.8">The easiest way to get started is to book directly using the booking panel on this page. If you'd rather ask something first, a quick email or WhatsApp works just as well, and I'll answer anything you'd like to know before committing to anything.</p>
 
-      <div class="contact-card">
+      <div class="contact-card enquiry-card" id="enquiry">
         <div class="contact-icon">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </div>
-        <div>
-          <h3>Email</h3>
-          <p>Happy to answer questions or confirm your first slot. I aim to reply within 24 hours.</p>
-          <a href="mailto:phoenix@tanner.me">phoenix@tanner.me</a>
+        <div class="enquiry-body">
+          <h3>Send a message</h3>
+          <p>Tell me a little about what's going on for you. I aim to reply within 24 hours.</p>
+          <form class="enquiry-form" id="enquiryForm" novalidate>
+            <div>
+              <label for="enq-name">Name</label>
+              <input id="enq-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="enq-email">Email</label>
+              <input id="enq-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div>
+              <label for="enq-phone">Phone <span style="color:var(--light)">(optional)</span></label>
+              <input id="enq-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div>
+              <label for="enq-message">What's going on for you?</label>
+              <textarea id="enq-message" name="message" required></textarea>
+            </div>
+            <div class="enquiry-hp" aria-hidden="true">
+              <label for="enq-company">Company</label>
+              <input id="enq-company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit">Send message</button>
+            <p class="enquiry-status" id="enquiryStatus" role="status" aria-live="polite"></p>
+          </form>
+          <p class="enquiry-fallback">Prefer your own email? Write to <a href="mailto:phoenix@tanner.me">phoenix@tanner.me</a> directly.</p>
         </div>
       </div>
 
@@ -157,7 +199,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
         <div>
           <h3>WhatsApp</h3>
           <p>Often the quickest way to reach me. Send a message any time.</p>
-          <a href="https://wa.me/447501827069" target="_blank" rel="noopener">+44 7501 827069</a>
+          <a href="https://wa.me/447501827069?text=Hello%20Phoenix" target="_blank" rel="noopener">+44 7501 827069</a>
         </div>
       </div>
 
@@ -224,5 +266,6 @@ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.cla
 const io=new IntersectionObserver(e=>{e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('v'),i*70);io.unobserve(en.target);}});},{threshold:0.08});
 document.querySelectorAll('.fi').forEach(el=>io.observe(el));
 </script>
+<script defer src="/assets/track.js"></script>
 </body>
 </html>

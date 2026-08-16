@@ -168,7 +168,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
   </div>
   <address class="f-nap">
     Breathe London Wellbeing, 34 Colombo St, London SE1 8DP &nbsp;|&nbsp; 279 Cambridge Heath Rd, London E2 0EL<br>
-    <a href="mailto:phoenix@tanner.me">phoenix@tanner.me</a> &nbsp;|&nbsp; <a href="tel:+447501827069">+44 7501 827069</a>
+    <a href="/contact#enquiry">phoenix@tanner.me</a> &nbsp;|&nbsp; <a href="tel:+447501827069">+44 7501 827069</a>
   </address>
   <div class="f-bottom">&copy; <span id="yr"></span> Craniosacral Therapy London &nbsp;&middot;&nbsp; CSTA Registered</div>
 </footer>
@@ -180,5 +180,6 @@ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.cla
 const io=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('v'),i*120);io.unobserve(e.target);}});},{threshold:0.08});
 document.querySelectorAll('.fi').forEach(el=>io.observe(el));
 </script>
+<script defer src="/assets/track.js"></script>
 </body>
 </html>
