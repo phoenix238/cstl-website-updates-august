@@ -11,6 +11,7 @@
 (function () {
   var BOOKING_ORIGIN = "https://cstlfalcrum.vercel.app";
   var ENQUIRY_ENDPOINT = BOOKING_ORIGIN + "/api/public/enquiry";
+  var SUBSCRIBE_ENDPOINT = BOOKING_ORIGIN + "/api/public/subscribe";
 
   function send(name, params) {
     if (typeof gtag === "function") gtag("event", name, params || {});
@@ -147,6 +148,56 @@
           statusEl.className = "enquiry-status err";
           btn.disabled = false;
           btn.textContent = "Send message";
+        });
+    });
+  }
+
+  // Newsletter signup — lives in the footer on every page (see newsletter.css).
+  // Posts the email to the booking app's /api/public/subscribe, the same
+  // cross-origin path the enquiry form uses; the app adds the person to its
+  // marketing (mail-merge) list. Namespaced apart from the enquiry form
+  // because both render together on /contact.
+  var nlForm = document.getElementById("newsletterForm");
+  if (nlForm) {
+    nlForm.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var st = document.getElementById("newsletterStatus");
+      var btn = nlForm.querySelector('button[type="submit"]');
+
+      if (nlForm.website.value) return; // honeypot — distinct name from the enquiry form's
+
+      var email = nlForm.email.value.trim();
+      if (!email || email.indexOf("@") < 1 || email.indexOf(".") === -1) {
+        st.textContent = "Please enter a valid email address.";
+        st.className = "nl-status err";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Subscribing…";
+      st.textContent = "";
+      st.className = "nl-status";
+
+      fetch(SUBSCRIBE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, website: nlForm.website.value, page: here }),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("request failed");
+          return res.json();
+        })
+        .then(function () {
+          send("newsletter_signup", { page_path: here });
+          nlForm.hidden = true;
+          st.textContent = "You're subscribed — thank you. A few notes a year, nothing more.";
+          st.className = "nl-status ok";
+        })
+        .catch(function () {
+          st.textContent = "Something went wrong — please try again, or email phoenix@tanner.me and I'll add you.";
+          st.className = "nl-status err";
+          btn.disabled = false;
+          btn.textContent = "Subscribe";
         });
     });
   }

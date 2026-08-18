@@ -127,6 +127,7 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
   "itemListElement": [{"@type":"ListItem","position":1,"name":"Home","item":"https://craniosacraltherapylondon.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://craniosacraltherapylondon.com/contact"}]
 }
 </script>
+<link rel="stylesheet" href="/assets/newsletter.css">
 </head>
 <body>
 <a href="https://wa.me/447501827069?text=Hello%20Phoenix" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Phoenix">
@@ -251,6 +252,19 @@ footer{background:var(--deep);color:rgba(250,248,244,.55);padding:4rem 8vw 2.5re
     <a href='/faq'>FAQ</a>
     <a href='/contact'>Contact / Book</a>
     <a href="https://www.instagram.com/phoenixtanner/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <div class="nl-signup">
+    <div class="nl-heading">Subscribe to my seasonal newsletter</div>
+    <form class="nl-form" id="newsletterForm" novalidate>
+      <input id="nl-email" name="email" type="email" class="nl-input" placeholder="Your email address" aria-label="Email address" autocomplete="email" required>
+      <div class="nl-hp" aria-hidden="true">
+        <label for="nl-website">Website</label>
+        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="nl-btn">Subscribe</button>
+    </form>
+    <p class="nl-status" id="newsletterStatus" role="status" aria-live="polite"></p>
+    <p class="nl-fineprint">A few notes a year. Unsubscribe any time.</p>
   </div>
   <address class="f-nap">
     Breathe London Wellbeing, 34 Colombo St, London SE1 8DP &nbsp;|&nbsp; 279 Cambridge Heath Rd, London E2 0EL<br>

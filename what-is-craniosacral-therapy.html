@@ -69,7 +69,8 @@ footer a:hover{color:var(--clay);}
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-5ZW5PGE2YG');
-</script></head>
+</script><link rel="stylesheet" href="/assets/newsletter.css">
+</head>
 <body>
 <nav>
   <div class="nav-inner">
@@ -167,6 +168,19 @@ footer a:hover{color:var(--clay);}
   <a href='/'>Home</a>
   <a href='/community-clinic'>Low Cost CST</a>
   <a href='/contact'>Contact / Book</a>
+  <div class="nl-signup">
+    <div class="nl-heading">Subscribe to my seasonal newsletter</div>
+    <form class="nl-form" id="newsletterForm" novalidate>
+      <input id="nl-email" name="email" type="email" class="nl-input" placeholder="Your email address" aria-label="Email address" autocomplete="email" required>
+      <div class="nl-hp" aria-hidden="true">
+        <label for="nl-website">Website</label>
+        <input id="nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="nl-btn">Subscribe</button>
+    </form>
+    <p class="nl-status" id="newsletterStatus" role="status" aria-live="polite"></p>
+    <p class="nl-fineprint">A few notes a year. Unsubscribe any time.</p>
+  </div>
   <br><br>
   &copy; <span id="yr"></span> Craniosacral Therapy London · Craniosacral Therapy London · CSTA Registered
 </footer>
